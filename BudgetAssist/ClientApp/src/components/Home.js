@@ -31,7 +31,7 @@ export const Home = (props) => {
 
                 <input type="submit"></input>
             </form>
-            {props.items.length}
+            <span>TOTAL ITEMS: {props.items.length}</span>
         </div>
     );
   

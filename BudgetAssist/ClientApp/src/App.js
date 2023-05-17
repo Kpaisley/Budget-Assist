@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 /*import AppRoutes from './AppRoutes'; */
 import { Counter } from './components/Counter';
@@ -10,8 +10,25 @@ import './custom.css';
 const App = () =>  {
 
     const [items, setItems] = useState([]);
-    
-    
+
+
+    useEffect(() => {
+        const x = sessionStorage.getItem('storedItems');
+        if (x) {
+            setItems(JSON.parse(x));
+        }
+        
+
+    }, [])
+
+
+    //ADD ITEMS TO SESSION STORAGE 
+    useEffect(() => {
+
+        if (items.length > 0) {
+            sessionStorage.setItem('storedItems', JSON.stringify(items));
+        }
+    }, [items])
 
 
 
@@ -27,6 +44,11 @@ const App = () =>  {
 
 
         setItems(items => [...items, itemToAdd]);
+
+        
+
+        
+        
         //ADD ITEMS TO SESSIONSTORAGE SO IT WILL SAVE ON REFRESH
         
     }
