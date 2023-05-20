@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-/*import AppRoutes from './AppRoutes'; */
 import { Counter } from './components/Counter';
 import { FetchData } from './components/FetchData';
 import { Home } from './components/Home';
@@ -11,11 +10,10 @@ const App = () =>  {
 
     const [items, setItems] = useState([]);
 
-
     useEffect(() => {
-        const x = sessionStorage.getItem('storedItems');
-        if (x) {
-            setItems(JSON.parse(x));
+        const itemsFound = sessionStorage.getItem('storedItems');
+        if (itemsFound) {
+            setItems(JSON.parse(itemsFound));
         }
         
 
@@ -24,7 +22,6 @@ const App = () =>  {
 
     //ADD ITEMS TO SESSION STORAGE 
     useEffect(() => {
-
         if (items.length > 0) {
             sessionStorage.setItem('storedItems', JSON.stringify(items));
         }
@@ -35,21 +32,44 @@ const App = () =>  {
     //ADD AN ITEM TO ITEMS ARRAY
     function addItem(e) {
         e.preventDefault();
+        var msg = document.getElementById('add-item-msg');
+        var id = 1;
+        var name = e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1); //CAPITALIZE ITEM NAME
+        var price = parseFloat(e.target[1].value).toFixed(2); //PARSE STRING VALUE INTO FLOAT WITH 2 DECIMALS
+
+        //INCREMENT ID BASED ON ID OF LAST ITEM IN ITEMS[]
+        if (items.length > 0) {
+            id = items[items.length - 1].id + 1;
+        }
+
+       
 
         const itemToAdd = {
-            name: e.target[0].value,
-            price: e.target[1].value,
+            id: id,
+            name: name,
+            price: price,
             category: e.target[2].value
         }
 
+        
+        switch (itemToAdd.name && e.target[1].value) {
+            case '': //DISPLAY ERROR IF EXPENSE NAME || TOTAL COST IS EMPTY
+                msg.style.color = "red";
+                msg.innerHTML = "Please ensure all fields are filled out"
+                break;
+            default:
+                setItems(items => [...items, itemToAdd]);
+                msg.style.color = "black";
+                msg.innerHTML = itemToAdd.name + " Added!";
 
-        setItems(items => [...items, itemToAdd]);
+                for (let i = 0; i < 3; i++) {
+                    e.target[i].value = "";
+                }
+
+                e.target[0].focus();
+        }
 
         
-
-        
-        
-        //ADD ITEMS TO SESSIONSTORAGE SO IT WILL SAVE ON REFRESH
         
     }
   

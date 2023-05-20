@@ -11,10 +11,10 @@ export const Home = (props) => {
 
             <form id="add-item-form" onSubmit={(e) => props.addItem(e) }>
                 <label htmlFor="expense-name">Expense Name</label>
-                <input type="text" name="expense-name" id="expense-name" placeholder="Dog Food" autoFocus></input>
+                <input className="form-input" type="text" name="expense-name" id="expense-name" placeholder="Dog Food" autoFocus></input>
 
                 <label htmlFor="item-cost">Total Cost $</label>
-                <input type="number" step="0.01" name="item-cost" id="item-cost" placeholder="110.24"></input>
+                <input className="form-input" type="number" step="0.01" name="item-cost" id="item-cost" placeholder="110.24"></input>
 
                 <label>Category</label>
                 <select>
@@ -29,9 +29,11 @@ export const Home = (props) => {
                     <option value="Other">Other</option>
                 </select>
 
-                <input type="submit"></input>
+                <input className="submit-btn" type="submit"></input>
+                <span id="add-item-msg"></span>
             </form>
             <span>TOTAL ITEMS: {props.items.length}</span>
+            
         </div>
     );
   
