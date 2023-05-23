@@ -1,0 +1,28 @@
+﻿
+.item-table {
+    display: flex;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.item-table:nth-child(2n+1) {
+    background-color: lightgray;
+}
+
+.item-table tbody {
+    width: 100%;
+}
+
+.item-table tr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-table td {
+    width: 30%;
+    text-align: center;
+}
+
+
+
+

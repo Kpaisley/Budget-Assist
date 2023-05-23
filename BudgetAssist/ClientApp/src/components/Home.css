@@ -13,7 +13,7 @@ h1, h3 {
     max-width: 60%;
     justify-content: center;
     text-align: center;
-    margin: 50px auto 0 auto;
+    margin: 50px auto 75px auto;
     padding: 25px;
     font-weight: 600;
 }
@@ -37,3 +37,29 @@ h1, h3 {
 #add-item-msg {
     margin-top: 10px;
 }
+
+.description-table {
+    display: flex;
+}
+
+.description-table thead {
+    width: 100%;
+}
+
+.description-table tr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.description-table th {
+    width: 30%;
+    text-align: center;
+}
+
+.color-blue {
+    color: blue;
+}
+
+
+
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BudgetItem } from './BudgetItem';
 import './Home.css';
 
 export const Home = (props) => {
@@ -11,10 +12,10 @@ export const Home = (props) => {
 
             <form id="add-item-form" onSubmit={(e) => props.addItem(e) }>
                 <label htmlFor="expense-name">Expense Name</label>
-                <input className="form-input" type="text" name="expense-name" id="expense-name" placeholder="Dog Food" autoFocus></input>
+                <input className="form-input" type="text" name="expense-name" id="expense-name" placeholder="Car Payment" autoFocus></input>
 
                 <label htmlFor="item-cost">Total Cost $</label>
-                <input className="form-input" type="number" step="0.01" name="item-cost" id="item-cost" placeholder="110.24"></input>
+                <input className="form-input" type="number" step="0.01" name="item-cost" id="item-cost" placeholder="150.49"></input>
 
                 <label>Category</label>
                 <select>
@@ -32,8 +33,23 @@ export const Home = (props) => {
                 <input className="submit-btn" type="submit"></input>
                 <span id="add-item-msg"></span>
             </form>
+
+            <table className="description-table">
+                <thead>
+                    <tr>
+                        <th><h5>Name</h5></th>
+                        <th><h5>Price</h5></th>
+                        <th><h5>Category</h5></th>
+                    </tr>
+                </thead>
+            </table>
+            <hr className="color-blue" />
+
+            {props.items.map((item) => (
+                <BudgetItem key={item.id} item={item} />
+                ))}
+
             <span>TOTAL ITEMS: {props.items.length}</span>
-            
         </div>
     );
   
