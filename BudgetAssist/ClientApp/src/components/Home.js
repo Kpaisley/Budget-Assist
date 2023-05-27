@@ -1,9 +1,40 @@
 import React from 'react';
 import { BudgetItem } from './BudgetItem';
+import { getTotal, getTotals } from './helper/PriceHelper.js';
 import './Home.css';
 
 export const Home = (props) => {
 
+    ////GET TOTAL COST OF ALL ITEMS
+    //function getTotalCost() {
+    //    var total = 0.00;
+    //    for (let i = 0; i < props.items.length; i++) {
+    //        total += parseFloat(props.items[i].price);
+            
+    //    }
+    //    return total.toFixed(2);
+    //}
+
+    ////GET TOTAL COST OF ENTERTAINMENT ITEMS
+    //function getTotalEntertainment() {
+    //    var total = 0.00;
+    //    for (let i = 0; i < props.items.length; i++) {
+    //        if (props.items[i].category === 'Entertainment') {
+    //            total += parseFloat(props.items[i].price);
+    //        }
+    //    }
+    //    return total.toFixed(2);
+    //}
+
+    //function getTotalGroceries() {
+    //    var total = 0.00;
+    //    for (let i = 0; i < props.items.length; i++) {
+    //        if (props.items[i].category === 'Groceries') {
+    //            total += parseFloat(props.items[i].price);
+    //        }
+    //    }
+    //    return total.toFixed(2);
+    //}
   
     return (
         <div>
@@ -49,7 +80,27 @@ export const Home = (props) => {
                 <BudgetItem key={item.id} item={item} />
                 ))}
 
-            <span>TOTAL ITEMS: {props.items.length}</span>
+            <span>Total Items: {props.items.length}</span>
+            <br />
+            <span>Total Cost: ${getTotal(props.items)}</span>
+            <br />
+            <span>Total Entertainment: ${getTotals('Entertainment', props.items)}</span>
+            <br />
+            <span>Total Groceries: ${getTotals('Groceries', props.items)}</span>
+            <br />
+            <span>Total Eating Out: ${getTotals('Eating Out', props.items)}</span>
+            <br />
+            <span>Total Bills: ${getTotals('Bills', props.items)}</span>
+            <br />
+            <span>Total Fuel: ${getTotals('Fuel', props.items)}</span>
+            <br />
+            <span>Total Pets: ${getTotals('Pets', props.items)}</span>
+            <br />
+            <span>Total Savings: ${getTotals('Savings', props.items)}</span>
+            <br />
+            <span>Total Other: ${getTotals('Other', props.items)}</span>
+            <br />
+            
         </div>
     );
   
