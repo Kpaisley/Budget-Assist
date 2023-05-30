@@ -1,41 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BudgetItem } from './BudgetItem';
-import { getTotal, getTotals } from './helper/PriceHelper.js';
+import { getTotal, fillTotalsArray } from './helper/PriceHelper.js';
 import './Home.css';
+import { PieChart } from './PieChart';
 
 export const Home = (props) => {
 
-    ////GET TOTAL COST OF ALL ITEMS
-    //function getTotalCost() {
-    //    var total = 0.00;
-    //    for (let i = 0; i < props.items.length; i++) {
-    //        total += parseFloat(props.items[i].price);
-            
-    //    }
-    //    return total.toFixed(2);
-    //}
+    const [totalsArray, setTotalsArray] = useState([]);
+    const [itemCategories] = useState(['Entertainment', 'Groceries', 'Eating Out', 'Bills', 'Fuel', 'Pets', 'Savings', 'Other']);
 
-    ////GET TOTAL COST OF ENTERTAINMENT ITEMS
-    //function getTotalEntertainment() {
-    //    var total = 0.00;
-    //    for (let i = 0; i < props.items.length; i++) {
-    //        if (props.items[i].category === 'Entertainment') {
-    //            total += parseFloat(props.items[i].price);
-    //        }
-    //    }
-    //    return total.toFixed(2);
-    //}
+    useEffect(() => {
 
-    //function getTotalGroceries() {
-    //    var total = 0.00;
-    //    for (let i = 0; i < props.items.length; i++) {
-    //        if (props.items[i].category === 'Groceries') {
-    //            total += parseFloat(props.items[i].price);
-    //        }
-    //    }
-    //    return total.toFixed(2);
-    //}
-  
+        var totals = fillTotalsArray(props.items, itemCategories);
+
+        setTotalsArray(totals);
+        
+
+    }, [props.items])
+
+
     return (
         <div>
             <h1>Welcome to Budget Assist V1.0.0</h1>
@@ -51,55 +34,45 @@ export const Home = (props) => {
                 <label>Category</label>
                 <select>
                     <option value=""></option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Groceries">Groceries</option>
-                    <option value="Eating Out">Eating Out</option>
-                    <option value="Bills">Bills</option>
-                    <option value="Fuel">Fuel</option>
-                    <option value="Pets">Pets</option>
-                    <option value="Savings">Savings</option>
-                    <option value="Other">Other</option>
+                    <option value={itemCategories[0]}>{itemCategories[0]}</option>
+                    <option value={itemCategories[1]}>{itemCategories[1]}</option>
+                    <option value={itemCategories[2]}>{itemCategories[2]}</option>
+                    <option value={itemCategories[3]}>{itemCategories[3]}</option>
+                    <option value={itemCategories[4]}>{itemCategories[4]}</option>
+                    <option value={itemCategories[5]}>{itemCategories[5]}</option>
+                    <option value={itemCategories[6]}>{itemCategories[6]}</option>
+                    <option value={itemCategories[7]}>{itemCategories[7]}</option>
                 </select>
 
                 <input className="submit-btn" type="submit"></input>
                 <span id="add-item-msg"></span>
             </form>
 
-            <table className="description-table">
-                <thead>
-                    <tr>
-                        <th><h5>Name</h5></th>
-                        <th><h5>Price</h5></th>
-                        <th><h5>Category</h5></th>
-                    </tr>
-                </thead>
-            </table>
-            <hr className="color-blue" />
+            <div hidden={props.items.length == 0}>
+                <table className="description-table">
+                    <thead>
+                        <tr>
+                            <th><h5>Name</h5></th>
+                            <th><h5>Price</h5></th>
+                            <th><h5>Category</h5></th>
+                        </tr>
+                    </thead>
+                </table>
+                <hr className="color-blue" />
 
-            {props.items.map((item) => (
-                <BudgetItem key={item.id} item={item} />
+                {props.items.map((item) => (
+                    <BudgetItem key={item.id} item={item} />
                 ))}
 
-            <span>Total Items: {props.items.length}</span>
-            <br />
-            <span>Total Cost: ${getTotal(props.items)}</span>
-            <br />
-            <span>Total Entertainment: ${getTotals('Entertainment', props.items)}</span>
-            <br />
-            <span>Total Groceries: ${getTotals('Groceries', props.items)}</span>
-            <br />
-            <span>Total Eating Out: ${getTotals('Eating Out', props.items)}</span>
-            <br />
-            <span>Total Bills: ${getTotals('Bills', props.items)}</span>
-            <br />
-            <span>Total Fuel: ${getTotals('Fuel', props.items)}</span>
-            <br />
-            <span>Total Pets: ${getTotals('Pets', props.items)}</span>
-            <br />
-            <span>Total Savings: ${getTotals('Savings', props.items)}</span>
-            <br />
-            <span>Total Other: ${getTotals('Other', props.items)}</span>
-            <br />
+                <span>Total Items: {props.items.length}</span>
+                <br />
+                <span>Total Cost: ${getTotal(props.items)}</span>
+                <br />
+
+                <PieChart entertainment={totalsArray[0]} groceries={totalsArray[1]} eatingOut={totalsArray[2]} bills={totalsArray[3]} fuel={totalsArray[4]} pets={totalsArray[5]}
+                          savings={totalsArray[6]} other={totalsArray[7]} />
+
+            </div>            
             
         </div>
     );
