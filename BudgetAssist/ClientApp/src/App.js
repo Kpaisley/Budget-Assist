@@ -10,6 +10,7 @@ const App = () =>  {
 
     const [items, setItems] = useState([]);
 
+    //Set items[] array to itemsFound from session storage to prevent losing data on page refresh
     useEffect(() => {
         const itemsFound = sessionStorage.getItem('storedItems');
         if (itemsFound) {
@@ -34,43 +35,43 @@ const App = () =>  {
         e.preventDefault();
         var msg = document.getElementById('add-item-msg');
         var id = 1;
-        var name = e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1); //CAPITALIZE ITEM NAME
-        var price = parseFloat(e.target[1].value).toFixed(2); //PARSE STRING VALUE INTO FLOAT WITH 2 DECIMALS
 
-        //INCREMENT ID BASED ON ID OF LAST ITEM IN ITEMS[]
-        if (items.length > 0) {
-            id = items[items.length - 1].id + 1;
-        }
-
-       
-
-        const itemToAdd = {
-            id: id,
-            name: name,
-            price: price,
-            category: e.target[2].value
-        }
-
-        
-        switch (itemToAdd.name && e.target[1].value) {
-            case '': //DISPLAY ERROR IF EXPENSE NAME || TOTAL COST IS EMPTY
+        //Display error message if any input values are left blank.
+        switch (e.target[0].value.length && e.target[1].value.length && e.target[2].value.length) {
+            case 0:
                 msg.style.color = "red";
                 msg.innerHTML = "Please ensure all fields are filled out"
                 break;
             default:
+                //Initialize & capitalize item name
+                const name = e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1);
+                //Initialize & parse string value to float with 2 decimal points.
+                const price = parseFloat(e.target[1].value).toFixed(2);
+                //Initialize item category
+                const category = e.target[2].value;
+
+                //Increment id based on the id of the last item in items[] array
+                if (items.length > 0) {
+                    id = items[items.length - 1].id + 1;
+                }
+
+                //Initialize itemToAdd with values above
+                const itemToAdd = {
+                    id: id,
+                    name: name,
+                    price: price,
+                    category: category
+                }
+                //Push itemToAdd to items[] array and display success message
                 setItems(items => [...items, itemToAdd]);
                 msg.style.color = "black";
                 msg.innerHTML = itemToAdd.name + " Added!";
-
-                for (let i = 0; i < 3; i++) {
-                    e.target[i].value = "";
-                }
-
+                
                 e.target[0].focus();
-        }
-
-        
-        
+                e.target[0].value = '';
+                e.target[1].value = '';
+                e.target[2].value = 'Entertainment';
+        } 
     }
   
     return (

@@ -1,0 +1,22 @@
+﻿
+.description-table {
+    display: flex;
+}
+
+    .description-table thead {
+        width: 100%;
+    }
+
+    .description-table tr {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .description-table th {
+        width: 30%;
+        text-align: center;
+    }
+
+.color-blue {
+    color: blue;
+}

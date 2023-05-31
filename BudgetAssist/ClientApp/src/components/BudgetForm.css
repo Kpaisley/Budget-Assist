@@ -1,0 +1,40 @@
+﻿
+
+h1, h3 {
+    text-align: center;
+    margin: 25px;
+}
+
+#add-item-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid;
+    border-radius: 8px;
+    max-width: 60%;
+    justify-content: center;
+    text-align: center;
+    margin: 50px auto 75px auto;
+    padding: 25px;
+    font-weight: 600;
+}
+
+    .form-input, #add-item-form select {
+        width: 75%;
+        margin: 5px auto 25px auto;
+        text-align: center;
+    }
+
+        .form-input:focus, #add-item-form select:focus {
+            outline: 1px solid black;
+        }
+
+.submit-btn {
+    max-width: 125px;
+    margin: auto;
+    color: blue;
+}
+
+#add-item-msg {
+    margin-top: 10px;
+}
