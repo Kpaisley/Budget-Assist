@@ -1,4 +1,4 @@
-﻿
+﻿import './PieChart.css';
 
 
 export const PieChart = (props) => {
@@ -6,14 +6,20 @@ export const PieChart = (props) => {
 
     return (
         <>
-            <h4>Entertainment: ${props.entertainment}</h4>
-            <h4>Groceries: ${props.groceries}</h4>
-            <h4>Bills: ${props.bills}</h4>
-            <h4>Eating Out: ${props.eatingOut}</h4>
-            <h4>Fuel: ${props.fuel}</h4>
-            <h4>Pets: ${props.pets}</h4>
-            <h4>Savings: ${props.savings}</h4>
-            <h4>Other: ${props.other}</h4>
+            <h4>Entertainment: ${props.entertainmentTotal}</h4>
+            <h4>Groceries: ${props.groceriesTotal}</h4>
+            <h4>Bills: ${props.billsTotal}</h4>
+            <h4>Eating Out: ${props.eatingOutTotal}</h4>
+            <h4>Fuel: ${props.fuelTotal}</h4>
+            <h4>Pets: ${props.petsTotal}</h4>
+            <h4>Savings: ${props.savingsTotal}</h4>
+            <h4>Other: ${props.otherTotal}</h4>
+
+           
+            
+
+
+
         </>
     );
 }
