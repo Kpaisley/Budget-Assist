@@ -7,7 +7,7 @@ import { useState } from "react";
 export const BudgetTable = (props) => {
 
     return props.items.length > 0 && (
-        <>
+        <div className="description-bg">
             <table className="description-table">
                 <thead>
                     <tr>
@@ -26,6 +26,6 @@ export const BudgetTable = (props) => {
             <br />
             <span>Total Cost: ${getTotal(props.items)}</span>
             <br />
-        </>
+        </div>
     );
 }

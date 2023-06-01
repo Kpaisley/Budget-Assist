@@ -5,8 +5,8 @@
     border-radius: 20px;
 }
 
-.item-table:nth-child(2n+2) {
-    background-color: lightgray;
+.item-table:nth-child(2n+1) {
+    background-color: rgb(33, 41, 68, .35);
 }
 
 .item-table tbody {

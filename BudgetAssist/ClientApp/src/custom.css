@@ -16,3 +16,12 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+body {
+    background-color: #151e3a;
+}
+
+.text-light-grey {
+    color: rgb(255, 255, 255, 0.8)
+}
+

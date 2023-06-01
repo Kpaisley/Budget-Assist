@@ -64,7 +64,7 @@ const App = () =>  {
                 }
                 //Push itemToAdd to items[] array and display success message
                 setItems(items => [...items, itemToAdd]);
-                msg.style.color = "black";
+                msg.style.color = "rgb(255, 255, 255, .9)";
                 msg.innerHTML = itemToAdd.name + " Added!";
                 
                 e.target[0].focus();

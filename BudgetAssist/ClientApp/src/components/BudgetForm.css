@@ -1,15 +1,11 @@
 ﻿
 
-h1, h3 {
-    text-align: center;
-    margin: 25px;
-}
+
 
 #add-item-form {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    border: 2px solid;
     border-radius: 8px;
     max-width: 60%;
     justify-content: center;
@@ -17,24 +13,56 @@ h1, h3 {
     margin: 50px auto 75px auto;
     padding: 25px;
     font-weight: 600;
+    background-color: rgb(255, 255, 255, 0.05);
 }
 
-    .form-input, #add-item-form select {
-        width: 75%;
-        margin: 5px auto 25px auto;
-        text-align: center;
-    }
+label {
+    color: rgb(255, 255, 255, .9)
+}
 
-        .form-input:focus, #add-item-form select:focus {
-            outline: 1px solid black;
-        }
+.form-input, #add-item-form select {
+    width: 75%;
+    margin: 5px auto 25px auto;
+    text-align: center;
+    background-color: rgb(255, 255, 255, 0.75);
+    border-radius: 10px;
+}
+
+.form-input:focus, #add-item-form select:focus, .submit-btn:focus 
+ {
+    outline: 2px solid;
+    outline-color: rgb(255, 255, 255, .75)
+}
 
 .submit-btn {
     max-width: 125px;
     margin: auto;
-    color: blue;
+    background-color: rgb(255, 255, 255, 0.75);
+    border-radius: 10px;
 }
+
+
+.submit-btn:hover {
+    background-color: rgb(255, 255, 255, 0.8)
+}
+
 
 #add-item-msg {
     margin-top: 10px;
+}
+
+
+
+/*REMOVE STEP ARROWS FROM NUMBER INPUT*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

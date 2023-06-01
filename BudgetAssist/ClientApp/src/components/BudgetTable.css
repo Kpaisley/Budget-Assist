@@ -1,22 +1,30 @@
 ﻿
+.description-bg {
+    background-color: rgb(255, 255, 255, .9);
+    border-radius: 8px;
+    padding: 20px;
+    color: #151e3a;
+    margin: 0 0 50px 0;
+}
+
 .description-table {
     display: flex;
 }
 
-    .description-table thead {
-        width: 100%;
-    }
+.description-table thead {
+    width: 100%;
+}
 
-    .description-table tr {
-        display: flex;
-        justify-content: space-around;
-    }
+.description-table tr {
+    display: flex;
+    justify-content: space-around;
+}
 
-    .description-table th {
-        width: 30%;
-        text-align: center;
-    }
+.description-table th {
+    width: 30%;
+    text-align: center;
+}
 
 .color-blue {
-    color: blue;
+    color: #151e3a;
 }

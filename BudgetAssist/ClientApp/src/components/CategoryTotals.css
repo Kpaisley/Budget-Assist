@@ -1,0 +1,24 @@
+﻿
+.category-table {
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 15vw;
+    min-width: 175px;
+    color: rgb(255, 255, 255, .9);
+    margin: 0 0 25px 0;
+}
+
+.category-item {
+    display: flex; 
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 8px;
+}
+
+.category-name {
+    margin-right: auto;
+}
+
+.category-total {
+    text-align: left;
+}

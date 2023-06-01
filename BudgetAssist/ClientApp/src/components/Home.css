@@ -1,6 +1,7 @@
 ﻿
 
-
-
-
-
+.intro {
+    text-align: center;
+    margin: 25px;
+    color: rgb(255, 255, 255, 0.9);
+}

@@ -9,23 +9,6 @@ export function getTotal(items) {
 }
 
 
-export function fillTotalsArray(items, itemCategories) {
-    const totalsMap = {};
-
-    for (let i = 0; i < itemCategories.length; i++) {
-        totalsMap[itemCategories[i]] = 0;
-    }
-    for (let x = 0; x < items.length; x++) {
-        const category = items[x].category;
-        const price = parseFloat(items[x].price);
-
-        totalsMap[category] += price;
-    }
-    
-    const totalsArray = Object.values(totalsMap).map(total => total.toFixed(2));
-    return totalsArray;
-}
-
 
 export function getCategoryTotals(items, itemCategories) {
 
@@ -48,6 +31,7 @@ export function getCategoryTotals(items, itemCategories) {
         categoryTotal: categoryTotals[categoryName].toFixed(2),
     }));
 
+    console.log(totalsArray);
     return totalsArray;
 }
 
