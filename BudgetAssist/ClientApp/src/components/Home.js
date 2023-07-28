@@ -10,7 +10,7 @@ export const Home = (props) => {
 
     const [itemCategories] = useState(['Entertainment', 'Groceries', 'Eating Out', 'Bills', 'Fuel', 'Pets', 'Savings', 'Other']);
     const [categoryTotals, setCategoryTotals] = useState([]);
-    /*const [categoryPercentages, setCategoryPercentages] = useState([])*/ //WILL BE USED FOR PIE CHART
+    const [categoryPercentages, setCategoryPercentages] = useState([]) 
 
     useEffect(() => {
         
@@ -20,8 +20,11 @@ export const Home = (props) => {
 
         
 
-        /*const totalCost = getTotal(props.items);*/
-        /*setCategoryPercentages(getPercentages(totalCost, totals));*/
+        const totalCost = getTotal(props.items);
+
+        
+        getPercentages(totalCost, totals);
+        setCategoryPercentages(getPercentages(totalCost, totals));
 
         
 

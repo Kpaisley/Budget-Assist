@@ -31,18 +31,21 @@ export function getCategoryTotals(items, itemCategories) {
         categoryTotal: categoryTotals[categoryName].toFixed(2),
     }));
 
-    console.log(totalsArray);
+    
     return totalsArray;
 }
 
 
-export function getPercentages(totalCost, itemTotals) {
+export function getPercentages(totalCost, categoryTotals) {
     const percentages = [];
-
+    
     if (totalCost !== 0) {
-        for (let i = 0; i < itemTotals.length; i++) {
-            const categoryPercentage = ((itemTotals[i] / totalCost) * 100).toFixed(1);
-            percentages.push(categoryPercentage);
+        for (let i = 0; i < categoryTotals.length; i++) {
+            const itemToAdd = {
+                categoryName: categoryTotals[i].categoryName,
+                categoryPercentage: ((categoryTotals[i].categoryTotal / totalCost) * 100).toFixed(1)
+            }
+            percentages.push(itemToAdd);
         }
     }
     return percentages;
